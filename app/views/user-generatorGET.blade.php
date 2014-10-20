@@ -12,10 +12,10 @@
 	<div class='container'>
 
 	
-	<a href='/'>Home</a>
+	<a href='/'>← Home</a>
 
 	<h1>User Generator</h1>
-				
+		
 	<!-- <form method="POST" action="{{url('/user-generator')}}" accept-charset="UTF-8">
 		<label for="users">How many users?</label>		
 		<input maxlength="2" name="users" type="text" id="users"/> (Max: 99)
@@ -33,6 +33,7 @@
 		<input type="submit" value="Generate!"/>    
     </form>
 	-->
+
     {{Form::open(array('url' => '/user-generator', 'method' => 'POST'))}}
     	{{Form::label('users', 'How many users')}}
     	{{Form::text('users');}}
@@ -49,19 +50,7 @@
     <p>
     	{{$viewOutput}}
     </p>
-	<!--
-    Form::open(array('url' => '/user-generator', 'method' => 'POST'));
-
-
-    Form::submit('Generate!');
-    Form::close();
-	-->
-    
-	
-    
 	
 </div>
-
-
 
 @stop
