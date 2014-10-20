@@ -25,21 +25,29 @@ Route::get('/', function()
 
 Route::get('/lorem-ipsum', function()
 {
-	return View::make('lorem-ipsumGET');
+	$view ="";
+	$data['viewOutput'] = $view;
+	return View::make('lorem-ipsumGET', $data);
 });
 
 Route::post('/lorem-ipsum', function()
 {
 	$generator = new Badcow\LoremIpsum\Generator();
+	$view = "";
 	$numParagraphs = $_POST['paragraphs'];
 	$paragraphs = $generator->getParagraphs($numParagraphs);
-	$view = implode('<p>', $paragraphs);
-	return $view;
+	for ($i=0; $i < $numParagraphs ; $i++) { 
+		$view = $view."<p> ".$paragraphs[$i]."<p/>";
+	}
+	//$view = implode('<br/>', $paragraphs);
+	$data['viewOutput'] = $view;
+	return View::make('lorem-ipsumGET', $data);
 });
 
 Route::get('/user-generator', function()
 {
-	return View::make('user-generatorGET');
+	$data['viewOutput'] = "";
+	return View::make('user-generatorGET', $data);
 });
 
 Route::post('/user-generator', function()
@@ -48,10 +56,15 @@ Route::post('/user-generator', function()
 	$numUsers = $_POST['users'];
 	$view = "";
 	for ($i=0; $i < $numUsers; $i++) { 
-		$view = $view."</br> ".$faker->name;
-		$view = $view."</br>".$faker->address;
-		$view = $view."</br>".$faker->text;
-		$view = $view."</br>";
+		$view = $view."<br/> ".$faker->name;
+		if (isset($_POST['birthdate'])) {
+			$view = $view."<br/>".$faker->date($format = 'Y-m-d', $max = 'now');
+		}
+		if (isset($_POST['profile'])) {
+			$view = $view."<br/>".$faker->text;
+		}
+		$view = $view."<br/>";
 	}
-	return $view;
+	$data['viewOutput'] = $view;
+	return View::make('user-generatorGET', $data);
 });

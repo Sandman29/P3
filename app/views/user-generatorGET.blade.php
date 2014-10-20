@@ -16,22 +16,39 @@
 
 	<h1>User Generator</h1>
 				
-	<form method="POST" action="{{url('/user-generator')}}" accept-charset="UTF-8">
+	<!-- <form method="POST" action="{{url('/user-generator')}}" accept-charset="UTF-8">
 		<label for="users">How many users?</label>		
-		<input maxlength="2" name="users" type="text" id="users"> (Max: 99)
-		<br>
+		<input maxlength="2" name="users" type="text" id="users"/> (Max: 99)
+		<br/>
 		
 		Include...
 		<br>
-		<input name="birthdate" type="checkbox">		
+		<input name="birthdate" id="birthdate" type="checkbox"/>		
 		<label for="birthdate">Birthdate</label>		
-		<br>
+		<br/>
 		
-		<input name="profile" type="checkbox">		
+		<input name="profile" id="profile" type="checkbox" />		
 		<label for="profile">Profile</label>		
-		<br>		
-		<input type="submit" value="Generate!">    
+		<br/>		
+		<input type="submit" value="Generate!"/>    
     </form>
+	-->
+    {{Form::open(array('url' => '/user-generator', 'method' => 'POST'))}}
+    	{{Form::label('users', 'How many users')}}
+    	{{Form::text('users');}}
+    	<br/>
+    	{{Form::checkbox('birthdate')}}
+    	{{Form::label('birthdate', 'Birthdate')}}
+    	<br/>
+    	{{Form::checkbox('profile')}}
+    	{{Form::label('profile', 'Profile')}}
+    	<br/>
+
+    {{Form::submit('Generate!')}}
+    {{Form::close()}}
+    <p>
+    	{{$viewOutput}}
+    </p>
 	<!--
     Form::open(array('url' => '/user-generator', 'method' => 'POST'));
 
