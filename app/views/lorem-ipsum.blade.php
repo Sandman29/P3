@@ -18,19 +18,6 @@
 	
 	How many paragraphs do you want?
 	
-	<<!-- 
-	<form method="POST" action="{{url('/lorem-ipsum')}}">
-	
-		<input name="_token" type="hidden" >	
-		<label for="paragraphs">Paragraphs</label>				
-		<input maxlength="2" name="paragraphs" type="text" value="5" id="paragraphs"> (Max: 99)
-		
-		<br><br>
-			
-		<input type="submit" value="Generate!">    
-    </form>
-    -->
-	
 	
 	{{Form::open(array('url' => '/lorem-ipsum', 'method' => 'POST'))}}
 		{{Form::label('paragraphs', 'Paragraphs')}}

@@ -7,7 +7,7 @@
 ## Description
 
 P3 is an exercise in Dynamic Web Development using Laravel.  This application is a Developer's Best Friend 
-random user generator and lorem ipsum generator.
+fake user generator and lorem ipsum generator.
 
 ## Demo
 
